@@ -1,0 +1,47 @@
+﻿@model trial2.Models.Offer
+@{
+    ViewBag.Title = "View_offer";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int i = 0;
+}
+
+
+<h2 class="text-center p-3">All Offers</h2>
+
+
+<div class="container">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.View_offer)
+            {
+                <tr>
+                    <th scope="row">@(++i ) </th>
+
+                    <td>@item.Product_title</td>
+
+                    <td>@item.Product_desc</td>
+
+                    <td>@item.Product_image</td>
+
+                    <td><a href="@Url.Action("Add_offer", "Admin", new { id=@item.Product_id })"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a href="@Url.Action("Deleteoffer","Admin", new {id = @item.Product_id})"><i class="fa-solid fa-trash"></i></a></td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+

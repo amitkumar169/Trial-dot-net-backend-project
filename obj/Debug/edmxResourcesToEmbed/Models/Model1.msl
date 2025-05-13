@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="amitModelStoreContainer" CdmEntityContainer="amitEntities">
+    <EntitySetMapping Name="Tbl_contact">
+      <EntityTypeMapping TypeName="amitModel.Tbl_contact">
+        <MappingFragment StoreEntitySet="Tbl_contact">
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_login">
+      <EntityTypeMapping TypeName="amitModel.Tbl_login">
+        <MappingFragment StoreEntitySet="Tbl_login">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Ins_Contact" FunctionName="amitModel.Store.Sp_Ins_Contact" />
+    <FunctionImportMapping FunctionImportName="sp_update_contact" FunctionName="amitModel.Store.sp_update_contact" />
+    <FunctionImportMapping FunctionImportName="sp_del_contact" FunctionName="amitModel.Store.sp_del_contact" />
+    <FunctionImportMapping FunctionImportName="Sp_Ins_Offer" FunctionName="amitModel.Store.Sp_Ins_Offer" />
+    <FunctionImportMapping FunctionImportName="sp_update_offer" FunctionName="amitModel.Store.sp_update_offer" />
+    <EntitySetMapping Name="Tbl_offer">
+      <EntityTypeMapping TypeName="amitModel.Tbl_offer">
+        <MappingFragment StoreEntitySet="Tbl_offer">
+          <ScalarProperty Name="Product_image" ColumnName="Product_image" />
+          <ScalarProperty Name="Product_desc" ColumnName="Product_desc" />
+          <ScalarProperty Name="Product_title" ColumnName="Product_title" />
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_blog">
+      <EntityTypeMapping TypeName="amitModel.Tbl_blog">
+        <MappingFragment StoreEntitySet="Tbl_blog">
+          <ScalarProperty Name="blog_image" ColumnName="blog_image" />
+          <ScalarProperty Name="blog_desc" ColumnName="blog_desc" />
+          <ScalarProperty Name="blog_title" ColumnName="blog_title" />
+          <ScalarProperty Name="blog_id" ColumnName="blog_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Ins_Blog" FunctionName="amitModel.Store.Sp_Ins_Blog" />
+    <FunctionImportMapping FunctionImportName="sp_update_blog" FunctionName="amitModel.Store.sp_update_blog" />
+    <EntitySetMapping Name="Tbl_product">
+      <EntityTypeMapping TypeName="amitModel.Tbl_product">
+        <MappingFragment StoreEntitySet="Tbl_product">
+          <ScalarProperty Name="product_image" ColumnName="product_image" />
+          <ScalarProperty Name="product_price" ColumnName="product_price" />
+          <ScalarProperty Name="product_desc" ColumnName="product_desc" />
+          <ScalarProperty Name="product_title" ColumnName="product_title" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Ins_Product" FunctionName="amitModel.Store.Sp_Ins_Product" />
+    <FunctionImportMapping FunctionImportName="sp_update_Product" FunctionName="amitModel.Store.sp_update_Product" />
+    <FunctionImportMapping FunctionImportName="sp_del_blog" FunctionName="amitModel.Store.sp_del_blog" />
+    <FunctionImportMapping FunctionImportName="sp_del_offer" FunctionName="amitModel.Store.sp_del_offer" />
+    <FunctionImportMapping FunctionImportName="sp_del_product" FunctionName="amitModel.Store.sp_del_product" />
+    <EntitySetMapping Name="Tbl_slider">
+      <EntityTypeMapping TypeName="amitModel.Tbl_slider">
+        <MappingFragment StoreEntitySet="Tbl_slider">
+          <ScalarProperty Name="slider_image" ColumnName="slider_image" />
+          <ScalarProperty Name="slider_id" ColumnName="slider_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_Ins_Slider" FunctionName="amitModel.Store.Sp_Ins_Slider" />
+    <FunctionImportMapping FunctionImportName="sp_update_Slider" FunctionName="amitModel.Store.sp_update_Slider" />
+    <FunctionImportMapping FunctionImportName="sp_del_slider" FunctionName="amitModel.Store.sp_del_slider" />
+  </EntityContainerMapping>
+</Mapping>

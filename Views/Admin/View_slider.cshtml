@@ -1,0 +1,37 @@
+﻿@model trial2.Models.Slider
+@{
+    ViewBag.Title = "View_slider";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int i = 0;
+
+}
+
+<h2 class="text-center p-3">Slider Images</h2>
+
+<div class="container">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Image</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.View_slider)
+            {
+                <tr>
+                    <th scope="row">@(++i ) </th>
+
+                    <td>@item.slider_image</td>
+
+                    <td><a href="@Url.Action("Slider", "Admin", new { id=@item.slider_id })"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a href="@Url.Action("Deleteslider","Admin", new {id = @item.slider_id})"><i class="fa-solid fa-trash"></i></a></td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

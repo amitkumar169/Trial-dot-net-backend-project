@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link href="~/assests/style.css" rel="stylesheet" />
+    <link rel="icon" href="~/images/ISHAN.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark text-light">
+        <div class="container-fluid">
+            
+            <a class="navbar-brand text-light" href="#"><img src="~/images/ishan.png" style="height:40px;width:100%" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link  text-light" href="@Url.Action("Index","Home")">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="@Url.Action("Products","Home")">All Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="@Url.Action("aboutus","Home")">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="@Url.Action("contact","Home")">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="@Url.Action("Blog","Home")">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="@Url.Action("Offer","Home")">Offers</a>
+                    </li>
+                </ul>
+
+                @*<a class="btn btn-danger" href="@Url.Action("Login","Home")">Login</a>*@
+
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-body-tertiary text-muted" style="background-color:honeydew">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" >
+
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Nav Links
+                        </h6>
+                        <p>
+                            <a href="@Url.Action("index","Home")" class="text-reset text-decoration-none">Home</a>
+                        </p>
+                        <p>
+                            <a href="@Url.Action("aboutus","Home")" class="text-reset text-decoration-none">About Us</a>
+                        </p>
+                        <p>
+                            <a href="@Url.Action("Contact","Home")" class="text-reset text-decoration-none">Contact Us</a>
+                        </p>
+                        <p>
+                            <a href="@Url.Action("Products","Home")" class="text-reset text-decoration-none">Products</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 ">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset text-decoration-none">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Ratnesh puram marris road</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            sales@hardware.in
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> +91 8532089562</p>
+                        <p><i class="fas fa-print me-3"></i> +91 8630765162</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

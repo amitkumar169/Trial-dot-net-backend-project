@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="amitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_blog">
+          <Key>
+            <PropertyRef Name="blog_id" />
+          </Key>
+          <Property Name="blog_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="blog_title" Type="nvarchar(max)" />
+          <Property Name="blog_desc" Type="nvarchar(max)" />
+          <Property Name="blog_image" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amit.dbo.Tbl_contact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="message" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amit.dbo.Tbl_login' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_offer">
+          <Key>
+            <PropertyRef Name="Product_id" />
+          </Key>
+          <Property Name="Product_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_title" Type="nvarchar(max)" />
+          <Property Name="Product_desc" Type="nvarchar(max)" />
+          <Property Name="Product_image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_title" Type="nvarchar(max)" />
+          <Property Name="product_desc" Type="nvarchar(max)" />
+          <Property Name="product_price" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="product_image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_slider">
+          <Key>
+            <PropertyRef Name="slider_id" />
+          </Key>
+          <Property Name="slider_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slider_image" Type="nvarchar(max)" />
+        </EntityType>
+        <Function Name="sp_del_blog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_del_contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_del_offer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_del_product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="sp_del_slider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="Sp_Ins_Blog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="desc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="Sp_Ins_Contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="subject" Type="nvarchar" Mode="In" />
+          <Parameter Name="message" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="Sp_Ins_Offer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="desc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="Sp_Ins_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="desc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="price" Type="numeric" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="Sp_Ins_Slider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_update_blog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+          <Parameter Name="title" Type="nvarchar" Mode="In" />
+          <Parameter Name="desc" Type="nvarchar" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_update_contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="subject" Type="nvarchar" Mode="In" />
+          <Parameter Name="message" Type="nvarchar" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_update_offer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+          <Parameter Name="title" Type="nvarchar" Mode="In" />
+          <Parameter Name="desc" Type="nvarchar" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_update_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+          <Parameter Name="title" Type="nvarchar" Mode="In" />
+          <Parameter Name="desc" Type="nvarchar" Mode="In" />
+          <Parameter Name="price" Type="numeric" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_update_Slider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="numeric" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="amitModelStoreContainer">
+          <EntitySet Name="Tbl_blog" EntityType="Self.Tbl_blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_offer" EntityType="Self.Tbl_offer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_product" EntityType="Self.Tbl_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_slider" EntityType="Self.Tbl_slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_contact" EntityType="Self.Tbl_contact" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_contact].[id] AS [id], 
+    [Tbl_contact].[username] AS [username], 
+    [Tbl_contact].[email] AS [email], 
+    [Tbl_contact].[subject] AS [subject], 
+    [Tbl_contact].[message] AS [message]
+    FROM [dbo].[Tbl_contact] AS [Tbl_contact]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tbl_login" EntityType="Self.Tbl_login" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_login].[id] AS [id], 
+    [Tbl_login].[username] AS [username], 
+    [Tbl_login].[password] AS [password]
+    FROM [dbo].[Tbl_login] AS [Tbl_login]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="amitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="amitEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_contact" EntityType="amitModel.Tbl_contact" />
+          <EntitySet Name="Tbl_login" EntityType="amitModel.Tbl_login" />
+          <FunctionImport Name="Sp_Ins_Contact">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="subject" Mode="In" Type="String" />
+            <Parameter Name="message" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_contact">
+            <Parameter Name="id" Mode="In" Type="Decimal" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="subject" Mode="In" Type="String" />
+            <Parameter Name="message" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_del_contact">
+          <Parameter Name="id" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Ins_Offer">
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_offer">
+            <Parameter Name="id" Mode="In" Type="Decimal" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Tbl_offer" EntityType="amitModel.Tbl_offer" />
+          <EntitySet Name="Tbl_blog" EntityType="amitModel.Tbl_blog" />
+          <FunctionImport Name="Sp_Ins_Blog">
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_blog">
+            <Parameter Name="id" Mode="In" Type="Decimal" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Tbl_product" EntityType="amitModel.Tbl_product" />
+          <FunctionImport Name="Sp_Ins_Product">
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Decimal" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_Product">
+            <Parameter Name="id" Mode="In" Type="Decimal" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Decimal" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_del_blog">
+          <Parameter Name="id" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_del_offer">
+          <Parameter Name="id" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_del_product">
+          <Parameter Name="id" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="Tbl_slider" EntityType="amitModel.Tbl_slider" />
+          <FunctionImport Name="Sp_Ins_Slider">
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_Slider">
+            <Parameter Name="id" Mode="In" Type="Decimal" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_del_slider">
+            <Parameter Name="id" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Tbl_contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_offer">
+          <Key>
+            <PropertyRef Name="Product_id" />
+          </Key>
+          <Property Name="Product_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_blog">
+          <Key>
+            <PropertyRef Name="blog_id" />
+          </Key>
+          <Property Name="blog_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="blog_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="blog_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="blog_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="product_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_slider">
+          <Key>
+            <PropertyRef Name="slider_id" />
+          </Key>
+          <Property Name="slider_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slider_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="amitModelStoreContainer" CdmEntityContainer="amitEntities">
+          <EntitySetMapping Name="Tbl_contact">
+            <EntityTypeMapping TypeName="amitModel.Tbl_contact">
+              <MappingFragment StoreEntitySet="Tbl_contact">
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_login">
+            <EntityTypeMapping TypeName="amitModel.Tbl_login">
+              <MappingFragment StoreEntitySet="Tbl_login">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Contact" FunctionName="amitModel.Store.Sp_Ins_Contact" />
+          <FunctionImportMapping FunctionImportName="sp_update_contact" FunctionName="amitModel.Store.sp_update_contact" />
+          <FunctionImportMapping FunctionImportName="sp_del_contact" FunctionName="amitModel.Store.sp_del_contact" />
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Offer" FunctionName="amitModel.Store.Sp_Ins_Offer" />
+          <FunctionImportMapping FunctionImportName="sp_update_offer" FunctionName="amitModel.Store.sp_update_offer" />
+          <EntitySetMapping Name="Tbl_offer">
+            <EntityTypeMapping TypeName="amitModel.Tbl_offer">
+              <MappingFragment StoreEntitySet="Tbl_offer">
+                <ScalarProperty Name="Product_image" ColumnName="Product_image" />
+                <ScalarProperty Name="Product_desc" ColumnName="Product_desc" />
+                <ScalarProperty Name="Product_title" ColumnName="Product_title" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_blog">
+            <EntityTypeMapping TypeName="amitModel.Tbl_blog">
+              <MappingFragment StoreEntitySet="Tbl_blog">
+                <ScalarProperty Name="blog_image" ColumnName="blog_image" />
+                <ScalarProperty Name="blog_desc" ColumnName="blog_desc" />
+                <ScalarProperty Name="blog_title" ColumnName="blog_title" />
+                <ScalarProperty Name="blog_id" ColumnName="blog_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Blog" FunctionName="amitModel.Store.Sp_Ins_Blog" />
+          <FunctionImportMapping FunctionImportName="sp_update_blog" FunctionName="amitModel.Store.sp_update_blog" />
+          <EntitySetMapping Name="Tbl_product">
+            <EntityTypeMapping TypeName="amitModel.Tbl_product">
+              <MappingFragment StoreEntitySet="Tbl_product">
+                <ScalarProperty Name="product_image" ColumnName="product_image" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_desc" ColumnName="product_desc" />
+                <ScalarProperty Name="product_title" ColumnName="product_title" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Product" FunctionName="amitModel.Store.Sp_Ins_Product" />
+          <FunctionImportMapping FunctionImportName="sp_update_Product" FunctionName="amitModel.Store.sp_update_Product" />
+          <FunctionImportMapping FunctionImportName="sp_del_blog" FunctionName="amitModel.Store.sp_del_blog" />
+          <FunctionImportMapping FunctionImportName="sp_del_offer" FunctionName="amitModel.Store.sp_del_offer" />
+          <FunctionImportMapping FunctionImportName="sp_del_product" FunctionName="amitModel.Store.sp_del_product" />
+          <EntitySetMapping Name="Tbl_slider">
+            <EntityTypeMapping TypeName="amitModel.Tbl_slider">
+              <MappingFragment StoreEntitySet="Tbl_slider">
+                <ScalarProperty Name="slider_image" ColumnName="slider_image" />
+                <ScalarProperty Name="slider_id" ColumnName="slider_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Ins_Slider" FunctionName="amitModel.Store.Sp_Ins_Slider" />
+          <FunctionImportMapping FunctionImportName="sp_update_Slider" FunctionName="amitModel.Store.sp_update_Slider" />
+          <FunctionImportMapping FunctionImportName="sp_del_slider" FunctionName="amitModel.Store.sp_del_slider" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

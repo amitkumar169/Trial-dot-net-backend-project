@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="amitModelStoreContainer" CdmEntityContainer="Dbmodel">
+    <EntitySetMapping Name="contacts">
+      <EntityTypeMapping TypeName="amitModel.contact">
+        <MappingFragment StoreEntitySet="contact">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="message" ColumnName="message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="amitModel.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

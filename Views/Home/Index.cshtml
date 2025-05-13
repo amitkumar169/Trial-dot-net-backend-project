@@ -1,0 +1,273 @@
+﻿@model trial2.Models.Index
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+}
+
+<style>
+    @@media screen and (min-width:1300px){
+        .carousel-item img {
+            aspect-ratio:870 / 352;
+            object-fit: fill;
+        }
+    }
+</style>
+<!--slider-->
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-inner">
+        @foreach (var item in Model.Sliderlist)
+        {
+            i++;
+            var active = i == 1 ? "active" : "";
+        <div class="carousel-item @active" data-bs-interval="10000">
+            <img src="~/Data/@item.slider_image" class="d-block w-100" alt="...">
+        </div>
+        @*<div class="carousel-item" data-bs-interval="2000">
+            <img src="~/images/banner-1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/banner-2.jpg" class="d-block w-100" alt="...">
+        </div>*@
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<!--Products-->
+<div class="container p-3">
+    <h3 class="text-center p-2">All Products</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.productlist)
+        {
+            i++;
+            var active = i == 1 ? "active" : "";
+
+        <div class="col">
+            <div class="card">
+                <img src="~/Data/@item.product_image" class="card-img-top" style="height:40vh;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.product_title</h5>
+                    <p class="card-text">@item.product_desc</p>
+                    <p class="card-text">@item.product_price</p>       
+                </div>
+            </div>
+        </div>
+
+        }
+    </div>
+
+</div>
+
+<div class="card text-center border-0">
+    <div class="card-body">
+        <a href="@Url.Action("Products","Home")" class="btn btn-primary">View more</a>
+    </div>
+</div>
+
+<!--icons-->
+<div class="icon">
+    <div class="logo">
+        <i class="fa-solid fa-truck"></i>
+        <p class="para">FREE SHIPPING</p>
+        <p>Fast & Ontime</p>
+    </div>
+    <div class="logo">
+        <i class="fa-solid fa-check"></i>
+        <p class="para">SATISFACTION</p>
+        <p>99% Guaranteed Satisfaction</p>
+    </div>
+    <div class="logo">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <p class="para">ORIGNAL PRODUCTS</p>
+        <p>100% Authentic Products</p>
+    </div>
+    <div class="logo">
+        <i class="fa-solid fa-pen-to-square"></i>
+        <p class="para">DEALS</p>
+        <p>Best Pricing</p>
+    </div>
+</div>
+
+
+<div class="container p-3">
+    <h3 class="text-center p-2">Explore our best deals</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach(var item in Model.Offerlist)
+            {
+                i++;
+                var active = i == 1 ? "active" : "";
+        <div class="col">
+            <div class="card p-3" style="background-color:honeydew">
+                <img src="~/Data/@item.Product_image" class="card-img-top"  style="height:40vh;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Product_title</h5>
+                    <p class="card-text">@item.Product_desc</p>
+                    @*<a href="" class="btn btn-primary">See more</a>*@
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+</div>
+<div class="card text-center border-0">
+    <div class="card-body">
+        <a href="@Url.Action("Offer","Home")" class="btn btn-primary">View more</a>
+    </div>
+</div>
+
+<!--review-->
+
+<div class="container">
+    <h3 class="text-center p-3">Reviews</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card p-4 shadow border-0">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <p class="card-text mt-4">High premium hardware and home interior shopping complex.Display models are very good and a lot of them are equipped with modern technology. Must visit this shop for high quality products.</p>
+                    <h5 class="card-text">Rahul kumar</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card p-4 shadow border-0">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <p class="card-text mt-4">With user-friendly locks, a beautiful door becomes more practical and appealing. These tools are fantastic allies for everyone and efficiently finish your security work and tasks with little effort.</p>
+                    <h5 class="card-text">Satyam Gupta</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card p-4 shadow border-0">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <p class="card-text mt-4">All one requires for interior decoration of home under one roof. multi products shop, so one can compare and decide by visiting one shop.Sorry, no photos, as clicking of photos not allowed in shop.</p>
+                    <h5 class="card-text">Harsh pratap</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--blogs-->
+<div class="container p-3">
+    <h3 class="text-center p-3">Getting Inspiration</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.Bloglist)
+            {
+                i++;
+                var active = i == 1 ? "active" : ""; 
+        <div class="col">
+            <div class="card ">
+                <img src="~/Data/@item.blog_image" class="card-img-top"  style="height:40vh;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.blog_title</h5>
+                    <p class="card-text">@item.blog_desc</p>
+                    @*<a href="" >Read more</a>*@
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+</div>
+<div class="card text-center border-0">
+    <div class="card-body">
+        <a href="@Url.Action("Blog","Home")" class="btn btn-primary">View more</a>
+    </div>
+</div>
+
+<div class="container">
+    <!--user -->
+    <div id="carouselMultiItemExample" data-mdb-carousel-init class="carousel slide carousel-dark text-center" data-mdb-ride="carousel">
+
+        <!-- Inner -->
+        <div class="container-fluid">
+            <h3 class="text-center p-3">Testimonial</h3>
+            <!-- Single item -->
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                <div class="col">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" alt="avatar"
+                                 style="width: 150px;" />
+                            <h5 class="mb-3">Anna Deynah</h5>
+                            <p>Business Women</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id
+                                officiis hic tenetur quae quaerat ad velit ab hic tenetur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar"
+                                 style="width: 150px;" />
+                            <h5 class="mb-3">John Doe</h5>
+                            <p>Business Man</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+                                suscipit laboriosam, nisi ut aliquid commodi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <img class="rounded-circle shadow-1-strong mb-4"
+                                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
+                                 style="width: 150px;" />
+                            <h5 class="mb-3">Maria Kate</h5>
+                            <p>Architecture</p>
+                            <p class="text-muted">
+                                <i class="fas fa-quote-left pe-2"></i>
+                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                                praesentium voluptatum deleniti atque corrupti.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Inner -->
+    </div>
+    <!-- Carousel wrapper -->
+</div>

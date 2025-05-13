@@ -1,0 +1,41 @@
+﻿@model trial2.Models.Contact
+
+@{
+    ViewBag.Title = "ContactList";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int i = 0;
+}
+
+
+
+<h2 class="text-center p-3">Messages</h2>
+<div class="container">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Message</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ContactList)
+            {
+                <tr>
+                    <th scope="row">@(++i)</th>
+                    <td>@item.username</td>
+                    <td>@item.email</td>
+                    <td>@item.subject</td>
+                    <td>@item.message</td>
+                    <td><a href="@Url.Action("Contact", "Home", new { id=@item.id })"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td><a href="@Url.Action("DeleteContactList","Admin", new { id=@item.id })"><i class="fa-solid fa-trash"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

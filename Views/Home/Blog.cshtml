@@ -1,0 +1,27 @@
+﻿@model trial2.Models.Home_blog
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+}
+
+<h2 class="text-center pt-4">Our Blogs</h2>
+<div class="container p-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model.Bloglist)
+        {
+            i++;
+            var active = i == 1 ? "active" : "";
+
+    <div class="col">
+        <div class="card">
+            <img src="~/Data/@item.blog_image" class="card-img-top" style="height:40vh;">
+            <div class="card-body">
+                <h5 class="card-title">@item.blog_title</h5>
+                <p class="card-text">@item.blog_desc</p>
+            </div>
+        </div>
+    </div>
+        }
+    </div>
+</div>

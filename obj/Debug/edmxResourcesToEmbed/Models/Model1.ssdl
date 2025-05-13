@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="amitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tbl_blog">
+    <Key>
+      <PropertyRef Name="blog_id" />
+    </Key>
+    <Property Name="blog_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="blog_title" Type="nvarchar(max)" />
+    <Property Name="blog_desc" Type="nvarchar(max)" />
+    <Property Name="blog_image" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'amit.dbo.Tbl_contact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Tbl_contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="subject" Type="nvarchar" MaxLength="50" />
+    <Property Name="message" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'amit.dbo.Tbl_login' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Tbl_login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_offer">
+    <Key>
+      <PropertyRef Name="Product_id" />
+    </Key>
+    <Property Name="Product_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_title" Type="nvarchar(max)" />
+    <Property Name="Product_desc" Type="nvarchar(max)" />
+    <Property Name="Product_image" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_title" Type="nvarchar(max)" />
+    <Property Name="product_desc" Type="nvarchar(max)" />
+    <Property Name="product_price" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="product_image" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_slider">
+    <Key>
+      <PropertyRef Name="slider_id" />
+    </Key>
+    <Property Name="slider_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slider_image" Type="nvarchar(max)" />
+  </EntityType>
+  <Function Name="sp_del_blog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="sp_del_contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="sp_del_offer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="sp_del_product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="sp_del_slider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="Sp_Ins_Blog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="desc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="Sp_Ins_Contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="subject" Type="nvarchar" Mode="In" />
+    <Parameter Name="message" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="Sp_Ins_Offer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="desc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="Sp_Ins_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="desc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="price" Type="numeric" Mode="In" />
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="Sp_Ins_Slider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_update_blog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="desc" Type="nvarchar" Mode="In" />
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_update_contact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="subject" Type="nvarchar" Mode="In" />
+    <Parameter Name="message" Type="nvarchar" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_update_offer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="desc" Type="nvarchar" Mode="In" />
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_update_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="desc" Type="nvarchar" Mode="In" />
+    <Parameter Name="price" Type="numeric" Mode="In" />
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="sp_update_Slider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="numeric" Mode="In" />
+    <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="amitModelStoreContainer">
+    <EntitySet Name="Tbl_blog" EntityType="Self.Tbl_blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_offer" EntityType="Self.Tbl_offer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_product" EntityType="Self.Tbl_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_slider" EntityType="Self.Tbl_slider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_contact" EntityType="Self.Tbl_contact" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Tbl_contact].[id] AS [id], 
+    [Tbl_contact].[username] AS [username], 
+    [Tbl_contact].[email] AS [email], 
+    [Tbl_contact].[subject] AS [subject], 
+    [Tbl_contact].[message] AS [message]
+    FROM [dbo].[Tbl_contact] AS [Tbl_contact]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Tbl_login" EntityType="Self.Tbl_login" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Tbl_login].[id] AS [id], 
+    [Tbl_login].[username] AS [username], 
+    [Tbl_login].[password] AS [password]
+    FROM [dbo].[Tbl_login] AS [Tbl_login]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

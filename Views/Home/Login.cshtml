@@ -1,0 +1,30 @@
+﻿@model trial2.Models.login_1
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center pt-4">Login</h2>
+
+<div class="frm">
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "row g-3 needs-validation", @novalidate = "novalidate" }))
+    {
+        <div class="group">
+            <label for="yourUsername">Username</label>
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @id = "yourUsername", @placeholder = "Enter your username", @required = "required" })
+        </div>
+        <div class="group">
+            <label for="yourPassword">Password</label>
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @id = "yourPassword", @placeholder = "Enter your password", @required = "required" })
+        </div>
+        <div class="group">
+            <button type="submit" class="btn" name="login_user">Sign in</button>
+        </div>
+        <div>
+            @if (TempData["ErrMsg"] != null)
+            {
+                <span style="color:darkred;padding-left:30px;">@TempData["ErrMsg"]</span>
+            }
+        </div>
+    }
+</div>

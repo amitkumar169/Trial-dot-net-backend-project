@@ -1,0 +1,48 @@
+﻿@model trial2.Models.Product
+@{
+    ViewBag.Title = "Add_product";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="text-center pt-3">Add Product</h2>
+
+@using (Html.BeginForm("Add_product", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "mt-4 frm" }))
+{
+    @*<form method="post" action="login.php" class="frm">*@
+
+    <div class="group">
+        <label><i class="fa-solid fa-user"></i> Title:</label>
+        @*<input type="text" name="username" placeholder="Enter your username">*@
+        @Html.EditorFor(model => model.title, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Title", @required = "required" } })
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-envelope"></i> Description:</label>
+        @*<input type="text" name="email" placeholder="Enter your email">*@
+        @Html.EditorFor(model => model.desc, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Desc", @required = "required" } })
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-envelope"></i> Price:</label>
+        @*<input type="text" name="email" placeholder="Enter your email">*@
+        @Html.EditorFor(model => model.price, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Price", @required = "required" } })
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-book"></i> Image:</label>
+        @*<input type="text" name="subject" placeholder="Enter your subject">*@
+        @Html.TextBoxFor(x => x.photo, new { @class = "form-control", @type = "file", @required = "Required", @autocomplete = "Off", @id = "photoInput" })
+
+    </div>
+    <div class="group" style="text-align:center;">
+        @if (TempData["ErrMsg"] != null)
+        {
+            <span style="color:darkred;text-align:center;">@TempData["ErrMsg"]</span>
+        }
+        @if (TempData["Msg"] != null)
+        {
+            <span style="color:green;text-align:center;">@TempData["Msg"]</span>
+        }
+    </div>
+    <div class="group">
+        <button type="submit" class="btn" name="login_user">Submit</button>
+    </div>
+
+}

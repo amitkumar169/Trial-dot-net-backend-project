@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="amitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="amitEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tbl_contact" EntityType="amitModel.Tbl_contact" />
+    <EntitySet Name="Tbl_login" EntityType="amitModel.Tbl_login" />
+    <FunctionImport Name="Sp_Ins_Contact">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="subject" Mode="In" Type="String" />
+      <Parameter Name="message" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_contact">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="subject" Mode="In" Type="String" />
+      <Parameter Name="message" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_del_contact">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Ins_Offer">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_offer">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Tbl_offer" EntityType="amitModel.Tbl_offer" />
+    <EntitySet Name="Tbl_blog" EntityType="amitModel.Tbl_blog" />
+    <FunctionImport Name="Sp_Ins_Blog">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_blog">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Tbl_product" EntityType="amitModel.Tbl_product" />
+    <FunctionImport Name="Sp_Ins_Product">
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_Product">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_del_blog">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_del_offer">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_del_product">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="Tbl_slider" EntityType="amitModel.Tbl_slider" />
+    <FunctionImport Name="Sp_Ins_Slider">
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_Slider">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+      <Parameter Name="image" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_del_slider">
+      <Parameter Name="id" Mode="In" Type="Decimal" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Tbl_contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_offer">
+    <Key>
+      <PropertyRef Name="Product_id" />
+    </Key>
+    <Property Name="Product_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Product_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Product_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_blog">
+    <Key>
+      <PropertyRef Name="blog_id" />
+    </Key>
+    <Property Name="blog_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="blog_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="blog_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="blog_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="product_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="product_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="product_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_slider">
+    <Key>
+      <PropertyRef Name="slider_id" />
+    </Key>
+    <Property Name="slider_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="slider_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

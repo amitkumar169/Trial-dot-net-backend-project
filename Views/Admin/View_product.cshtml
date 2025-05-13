@@ -1,0 +1,40 @@
+﻿@model trial2.Models.Product
+@{
+    ViewBag.Title = "View_product";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int i = 0;
+}
+
+
+<h2 class="text-center p-3">All Products</h2>
+
+<div class="container">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.View_product)
+            {
+            <tr>
+                <th scope="row">@(++i)</th>
+                <td>@item.product_title</td>
+                <td>@item.product_desc</td>
+                <td>@item.product_price</td>
+                <td>@item.product_image</td>
+                <td><a href="@Url.Action("Add_product","Admin", new { id = @item.product_id})"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="@Url.Action("Deleteproduct","Admin", new { id = @item.product_id})"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

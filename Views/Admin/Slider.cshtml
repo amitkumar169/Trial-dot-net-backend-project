@@ -1,0 +1,35 @@
+﻿@model trial2.Models.Slider
+@{
+    ViewBag.Title = "Slider";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<h2 class="text-center p-2">Slider</h2>
+
+@using (Html.BeginForm("Slider", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "frm" }))
+{
+    @*<form method="post" action="login.php" class="frm">*@
+
+    <div class="group">
+        <label><i class="fa-solid fa-book"></i> Image:</label>
+        @*<input type="text" name="subject" placeholder="Enter your subject">*@
+        @Html.TextBoxFor(x => x.photo, new { @class = "form-control", @type = "file", @required = "Required", @autocomplete = "Off", @id = "photoInput" })
+
+    </div>
+    <div class="group" style="text-align:center;">
+        @if (TempData["ErrMsg"] != null)
+        {
+            <span style="color:darkred;text-align:center;">@TempData["ErrMsg"]</span>
+        }
+        @if (TempData["Msg"] != null)
+        {
+            <span style="color:green;text-align:center;">@TempData["Msg"]</span>
+        }
+    </div>
+    <div class="group">
+        <button type="submit" class="btn" name="login_user">Submit</button>
+    </div>
+
+}
+

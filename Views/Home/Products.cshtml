@@ -1,0 +1,29 @@
+﻿@model trial2.Models.Home_product 
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+}
+
+<h2 class="text-center pt-4">Our Products</h2>
+
+<!--products area-->
+<div class="container p-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach(var item in Model.Productlist)
+                {
+                    i++;
+                    var active = i == 1 ? "active" : "";
+        <div class="col">
+            <div class="card p-4">
+                <img src="~/Data/@item.product_image" class="card-img-top" style="height:40vh;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.product_title</h5>
+                    <p class="card-text">@item.product_desc</p>
+                    <p class="card-text">@item.product_price</p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

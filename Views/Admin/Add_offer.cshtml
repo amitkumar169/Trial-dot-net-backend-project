@@ -1,0 +1,43 @@
+﻿@model trial2.Models.Offer
+@{
+    ViewBag.Title = "Add_offer";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="text-center p-2">Add Offer</h2>
+
+@using (Html.BeginForm("Add_offer", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "mt-4 frm" }))
+{
+    @*<form method="post" action="login.php" class="frm">*@
+
+    <div class="group">
+        <label><i class="fa-solid fa-user"></i> Title:</label>
+        @*<input type="text" name="username" placeholder="Enter your username">*@
+        @Html.EditorFor(model => model.title, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Title", @required = "required" } })
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-envelope"></i> Description:</label>
+        @*<input type="text" name="email" placeholder="Enter your email">*@
+        @Html.EditorFor(model => model.desc, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Desc", @required = "required" } })
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-book"></i> Image:</label>
+        @*@Html.TextBoxFor(model => model.photo, new { HtmlAttributes = new { @class = "form-control", @type = "file", @placeholder = "Enter Image", @required = "required" } })*@
+        @Html.TextBoxFor(x => x.photo, new { @class = "form-control", @type = "file", @required = "Required", @autocomplete = "Off", @id = "photoInput" })
+
+    </div>
+    <div class="group" style="text-align:center;">
+        @if (TempData["ErrMsg"] != null)
+        {
+            <span style="color:darkred;text-align:center;">@TempData["ErrMsg"]</span>
+        }
+        @if (TempData["Msg"] != null)
+        {
+            <span style="color:green;text-align:center;">@TempData["Msg"]</span>
+        }
+    </div>
+    <div class="group">
+        <button type="submit" class="btn" name="login_user">Submit</button>
+    </div>
+
+}

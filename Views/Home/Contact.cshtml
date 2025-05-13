@@ -1,0 +1,53 @@
+﻿@model trial2.Models.Contact
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center pt-4">Contact</h2>
+
+
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "mt-4 frm" }))
+{
+    @*<form method="post" action="login.php" class="frm">*@
+
+    <div class="group">
+        <label><i class="fa-solid fa-user"></i> Username:</label>
+        @*<input type="text" name="username" placeholder="Enter your username">*@
+        @Html.EditorFor(model => model.name, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Your Name", @required = "required" } })
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-envelope"></i> Email:</label>
+        @*<input type="text" name="email" placeholder="Enter your email">*@
+        @Html.EditorFor(model => model.email, new { HtmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Enter Your email", @required = "required" } })
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-book"></i> Subject:</label>
+        @*<input type="text" name="subject" placeholder="Enter your subject">*@
+        @Html.EditorFor(model => model.subject, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Your subject", @required = "required" } })
+
+    </div>
+    <div class="group">
+        <label><i class="fa-solid fa-message"></i> Message:</label>
+        @*<input type="text" name="message" placeholder="Enter your message">*@
+        @Html.EditorFor(model => model.message, new { HtmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Enter Your message", @required = "required" } })
+
+    </div>
+    <div class="group" style="text-align:center;">
+        @if (TempData["ErrMsg"] != null)
+        {
+            <span style="color:darkred;text-align:center;">@TempData["ErrMsg"]</span>
+        }
+        @if (TempData["Msg"] != null)
+        {
+            <span style="color:green;text-align:center;">@TempData["Msg"]</span>
+        }
+    </div>
+    <div class="group">
+        <button type="submit" class="btn" name="login_user">Contact</button>
+    </div>
+
+}
+
+
